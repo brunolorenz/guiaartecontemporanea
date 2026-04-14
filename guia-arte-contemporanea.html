@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia — Da ilustração à prática contemporânea</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F2EB;
+    --surface: #EFEBE1;
+    --surface2: #E8E3D7;
+    --ink: #1C1A15;
+    --ink2: #4A4640;
+    --ink3: #8A857C;
+    --accent: #8B3A1A;
+    --accent2: #2A5C3F;
+    --accent3: #1A3A5C;
+    --gold: #B8933A;
+    --border: rgba(28,26,21,0.12);
+    --border2: rgba(28,26,21,0.06);
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: 18px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 3rem 2rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .header-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 1rem;
+  }
+
+  header h1 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  header h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header-desc {
+    font-size: 1.05rem;
+    color: var(--ink2);
+    max-width: 560px;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  /* PROGRESS BAR */
+  .progress-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .progress-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    white-space: nowrap;
+  }
+
+  .progress-track {
+    flex: 1;
+    height: 2px;
+    background: var(--border);
+    position: relative;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.4s ease;
+  }
+
+  .progress-pct {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink3);
+    white-space: nowrap;
+  }
+
+  /* NAV */
+  .phase-nav {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    gap: 2rem;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .phase-nav a {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .phase-nav a:hover { color: var(--accent); }
+
+  /* MAIN */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem 6rem;
+  }
+
+  /* PHASE SECTION */
+  .phase {
+    padding-top: 4rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .phase-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .phase-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink3);
+  }
+
+  .phase-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+
+  .tag-purple { background: #E8E4F8; color: #4A3FA0; }
+  .tag-green { background: #DFF0E8; color: #1A5C3A; }
+  .tag-amber { background: #F5EDD8; color: #7A5510; }
+
+  .phase h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+  }
+
+  .phase-subtitle {
+    font-size: 0.95rem;
+    color: var(--ink2);
+    font-weight: 300;
+    max-width: 620px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border2);
+  }
+
+  /* ITEM GRID */
+  .items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--border2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .item {
+    background: var(--bg);
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.15s;
+    position: relative;
+  }
+
+  .item:hover { background: var(--surface); }
+  .item.done { opacity: 0.55; }
+  .item.active { background: var(--surface2); }
+
+  .item-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .item-name {
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .item-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: transparent;
+    transition: all 0.2s;
+    margin-top: 2px;
+  }
+
+  .item-check.checked {
+    background: var(--accent2);
+    border-color: var(--accent2);
+    color: white;
+  }
+
+  .item-desc {
+    font-size: 0.82rem;
+    color: var(--ink3);
+    line-height: 1.5;
+    font-family: var(--font-mono);
+    margin-bottom: 0.6rem;
+  }
+
+  .item-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 1px;
+  }
+
+  /* DRAWER */
+  .drawer {
+    display: none;
+    grid-column: 1 / -1;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 2rem 1.75rem;
+    animation: slideDown 0.2s ease;
+  }
+
+  .drawer.open { display: block; }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .drawer-title {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    color: var(--ink);
+  }
+
+  .drawer-content {
+    font-size: 0.95rem;
+    color: var(--ink2);
+    line-height: 1.8;
+    font-weight: 300;
+    max-width: 640px;
+    margin-bottom: 1.5rem;
+  }
+
+  .exercise {
+    border-left: 2px solid var(--accent2);
+    padding: 0.75rem 1rem;
+    background: rgba(42,92,63,0.05);
+    border-radius: 0 2px 2px 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .exercise-label {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 0.4rem;
+  }
+
+  .exercise p {
+    font-size: 0.85rem;
+    color: var(--ink2);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .drawer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .drawer-links a {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--accent3);
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid rgba(26,58,92,0.25);
+    border-radius: 2px;
+    transition: all 0.15s;
+  }
+
+  .drawer-links a:hover {
+    background: var(--accent3);
+    color: white;
+    border-color: var(--accent3);
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--ink3);
+    border-top: 1px solid var(--border);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    header, .progress-wrap, .phase-nav, main { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .items-grid { grid-template-columns: 1fr; }
+    .phase-nav { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="header-eyebrow">@unspredinhos — plano de estudos</p>
+  <h1>Da ilustração qualificada<br>à <em>prática contemporânea</em></h1>
+  <p class="header-desc">Um guia progressivo de artistas, textos e exercícios para mover o trabalho no espectro — sem abandonar aquarela, arquitetura urbana nem afeto pelo território.</p>
+</header>
+
+<div class="progress-wrap">
+  <span class="progress-label">Progresso geral</span>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+  <span class="progress-pct" id="progress-pct">0 / 0</span>
+</div>
+
+<nav class="phase-nav" aria-label="Fases">
+  <a href="#fase1">I — Reconhecimento</a>
+  <a href="#fase2">II — Vocabulário</a>
+  <a href="#fase3">III — Produção</a>
+</nav>
+
+<main id="guide"></main>
+
+<footer>
+  Progresso salvo localmente no navegador · Clique em qualquer item para aprofundar
+</footer>
+
+<script>
+const data = [
+  {
+    id: "fase1",
+    num: "Fase I",
+    tag: "Reconhecimento",
+    tagClass: "tag-purple",
+    title: "Ver como os outros fazem",
+    subtitle: "Antes de mudar o discurso, calibrar o olhar. Estude quem já trabalha com figuração, cotidiano e território — e é lido como arte contemporânea. A diferença não está no médium, está no enquadramento.",
+    sections: [
+      {
+        label: "Artistas brasileiros — referências essenciais",
+        items: [
+          {
+            name: "Leonilson",
+            desc: "Afeto, escala íntima, trajetória canônica no Brasil",
+            badge: "essencial", badgeClass: "tag-purple",
+            content: "Leonilson é o caso mais direto para você: trabalho pequeno, afetivo, aparentemente simples — e lido como um dos mais importantes da arte brasileira. Estude especialmente como ele falava sobre o próprio trabalho. A intimidade não era ingenuidade — era posição política e poética.",
+            exercise: "Busque entrevistas e depoimentos de Leonilson na Enciclopédia Itaú Cultural e no YouTube. Anote como ele descrevia seus temas sem romantizar. Que palavras ele usava para nomear o que fazia?",
+            links: [
+              { label: "Leonilson e afeto como posição contemporânea", q: "leonilson site:enciclopedia.itaucultural.org.br" },
+              { label: "Ver obras", q: "leonilson obras aquarela desenho" }
+            ]
+          },
+          {
+            name: "Anna Bella Geiger",
+            desc: "Mapeamento, território, Brasil como matéria artística",
+            badge: "essencial", badgeClass: "tag-purple",
+            content: "Geiger faz do mapa e do território brasileiro uma linguagem artística há décadas. O paralelo com o Desenhando o RS e o 365 Predinhos é direto — ela te dá o vocabulário para nomear o que você já faz como pesquisa, não como documentação.",
+            exercise: "Pesquise a série 'Brasil nativo / Brasil alienígena'. Compare com seu projeto de mapeamento do RS. Que perguntas ela está fazendo que você também poderia estar fazendo?",
+            links: [
+              { label: "Anna Bella Geiger mapeamento território", q: "anna bella geiger brasil nativo alienígena" }
+            ]
+          },
+          {
+            name: "Fernanda Gomes",
+            desc: "O cotidiano mínimo como radicalidade",
+            badge: "referência conceitual", badgeClass: "tag-green",
+            content: "Gomes trabalha com resíduos e objetos mínimos do cotidiano de forma que parece quase invisível — e é lida como um dos trabalhos mais rigorosos da arte brasileira. Ela te ensina que o tamanho não determina a ambição, e que a atenção ao pequeno pode ser uma posição radical.",
+            exercise: "Veja documentação de suas exposições. Como o espaço é ativado por coisas pequenas? O que isso muda na leitura da obra?",
+            links: [
+              { label: "Fernanda Gomes exposição instalação", q: "fernanda gomes artista instalação cotidiano" }
+            ]
+          },
+          {
+            name: "Waltercio Caldas",
+            desc: "O espaço entre as coisas como matéria",
+            badge: "referência conceitual", badgeClass: "tag-green",
+            content: "Caldas trabalha com o que não está visível — o intervalo, a ausência, o que o olhar pressupõe. Útil para você pensar o que existe entre os predinhos que você pinta: o que você escolhe não mostrar, e o que essa escolha diz.",
+            exercise: "Olhe para suas obras e tente descrever o que não está lá. O que o enquadramento exclui? Essa exclusão é uma decisão artística?",
+            links: [
+              { label: "Waltercio Caldas obras conceito", q: "waltercio caldas obras espaço" }
+            ]
+          }
+        ]
+      },
+      {
+        label: "Artistas internacionais — referências de mercado e discurso",
+        items: [
+          {
+            name: "Cy Twombly",
+            desc: "A legitimação do gesto aparentemente ingênuo",
+            badge: "referência de mercado", badgeClass: "tag-amber",
+            content: "Twombly é fundamental para entender como a caligrafia, o rabisco, o gesto 'inacabado' foram legitimados no mais alto circuito contemporâneo. Ele não pintava 'bem' no sentido técnico — mas o trabalho estava carregado de referências literárias e históricas densas. O que muda quando um trabalho aparentemente simples está ancorado em camadas de leitura?",
+            exercise: "Pesquise as séries 'Quattro Stagioni' e 'Fifty Days at Iliam'. Leia como críticos descrevem essas obras. Anote o vocabulário usado — e tente aplicá-lo a uma obra sua.",
+            links: [
+              { label: "Cy Twombly crítica poética", q: "cy twombly paintings analysis poetry" },
+              { label: "Ver Quattro Stagioni", q: "cy twombly quattro stagioni" }
+            ]
+          },
+          {
+            name: "Peter Doig",
+            desc: "Pintura figurativa de volta ao circuito contemporâneo",
+            badge: "referência de mercado", badgeClass: "tag-amber",
+            content: "Doig é o melhor argumento vivo de que pintura figurativa pode ser lida com seriedade contemporânea. O que importa estudar nele não é a técnica — é como ele ancora cada obra em camadas de memória, cinema e fotografia. A imagem nunca é apenas a imagem: é sempre uma imagem sobre outra imagem.",
+            exercise: "Assista entrevistas dele na Tate e na Gagosian. Preste atenção em como ele conecta cada obra a outras referências visuais. Quais são as referências por trás dos seus predinhos?",
+            links: [
+              { label: "Peter Doig entrevista pintura", q: "peter doig interview painting memory" }
+            ]
+          },
+          {
+            name: "Tacita Dean",
+            desc: "Arquivo, tempo, atenção ao detalhe como posição",
+            badge: "referência conceitual", badgeClass: "tag-green",
+            content: "Dean usa o desenho, o filme, o arquivo como formas de resistência ao digital e ao efêmero. Importante para você entender como a lentidão e a atenção ao detalhe podem ser posições políticas — não apenas escolhas estéticas. Seu projeto de percorrer ruas tem essa dimensão.",
+            exercise: "Leia textos dela sobre os blackboard drawings. Como ela descreve o processo, não o resultado? Tente escrever sobre seu próprio processo assim.",
+            links: [
+              { label: "Tacita Dean blackboard drawings", q: "tacita dean blackboard drawings process" }
+            ]
+          },
+          {
+            name: "Kara Walker",
+            desc: "Silhueta, narrativa histórica, território como trauma",
+            badge: "referência conceitual", badgeClass: "tag-green",
+            content: "Walker usa uma linguagem aparentemente simples — silhuetas em papel — para tratar da história do Sul dos EUA, da escravidão, da violência. Interessante para pensar como uma escolha formal 'tradicional' pode carregar conteúdo político denso.",
+            exercise: "O que o teu território (RS, arquitetura, rua) carrega de história que não aparece nas tuas obras? Isso é uma escolha ou uma lacuna?",
+            links: [
+              { label: "Kara Walker silhouettes history", q: "kara walker silhouettes meaning history" }
+            ]
+          },
+          {
+            name: "Moyra Davey",
+            desc: "Fotografia do cotidiano com peso teórico",
+            badge: "referência conceitual", badgeClass: "tag-green",
+            content: "Davey fotografa o cotidiano doméstico mais banal — moedas, capas de disco, prateleiras — e constrói sobre isso um discurso denso sobre memória, feminismo e arquivos pessoais. O que ela ensina: o assunto não precisa ser grandioso para a obra ser séria.",
+            exercise: "Escreva sobre um dos seus predinhos como se fosse um objeto de arquivo pessoal. O que ele guarda? De quê ele é evidência?",
+            links: [
+              { label: "Moyra Davey photography archive", q: "moyra davey photography archive everyday" }
+            ]
+          },
+          {
+            name: "Wolfgang Tillmans",
+            desc: "O cotidiano como atenção radical",
+            badge: "referência de mercado", badgeClass: "tag-amber",
+            content: "Tillmans fotografa tudo — pôr do sol, mesa de cozinha, rua, corpos — com a mesma atenção e seriedade. O que o eleva acima do snapshot é a coerência de uma posição: tudo merece atenção. Isso ressoa diretamente com sua prática de documentar o ordinário urbano.",
+            exercise: "Em que sentido o seu olhar para os predinhos é uma posição ética, não apenas estética? Escreva isso em uma frase.",
+            links: [
+              { label: "Wolfgang Tillmans everyday practice", q: "wolfgang tillmans everyday photography practice" }
+            ]
+          }
+        ]
+      },
+      {
+        label: "Práticas duracionais — o processo como obra",
+        items: [
+          {
+            name: "On Kawara",
+            desc: "Uma obra por dia: o paralelo mais direto",
+            badge: "referência de projeto", badgeClass: "tag-amber",
+            content: "Kawara pintou a data de cada dia por décadas. A obra não é cada tela — é o conjunto, o processo, o tempo acumulado como massa. Seu projeto 365 Predinhos tem a mesma lógica duracional. Estudar como ele é contextualizado te dá o vocabulário para falar sobre o projeto como obra, não como desafio.",
+            exercise: "Como você descreveria o 365 Predinhos sem usar as palavras 'desafio', 'todo dia' ou '365'? Escreva em três frases.",
+            links: [
+              { label: "On Kawara today series durational", q: "on kawara today series conceptual art" }
+            ]
+          },
+          {
+            name: "Roman Opalka",
+            desc: "O tempo como matéria pictórica",
+            badge: "referência de projeto", badgeClass: "tag-amber",
+            content: "Opalka passou décadas pintando números consecutivos em telas idênticas, sempre com a mesma metodologia. A obra é o sistema — não cada tela. O envelhecimento do artista torna-se parte da obra. Sua prática diária tem essa dimensão acumulativa que vai além do resultado de cada dia.",
+            exercise: "O que o conjunto do 365 Predinhos vai dizer que nenhuma obra individual diz? Escreva sobre o projeto como um todo, não como cada parte.",
+            links: [
+              { label: "Roman Opalka pinturas numeração processo", q: "roman opalka paintings time process" }
+            ]
+          },
+          {
+            name: "Hanne Darboven",
+            desc: "Arquivo, escrita, tempo como estrutura",
+            badge: "referência conceitual", badgeClass: "tag-green",
+            content: "Darboven criou sistemas de escrita próprios e os aplicou por décadas, gerando arquivos imensos e repetitivos. O que interessa aqui é a noção de que um sistema simples, aplicado com rigor ao longo do tempo, produz uma obra de escala e profundidade impossíveis de prever.",
+            exercise: "Qual é o sistema do seu projeto? O que permanece constante em cada obra — além do tema? Esse sistema é visível para quem olha?",
+            links: [
+              { label: "Hanne Darboven archive writing system", q: "hanne darboven art writing archive system" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    id: "fase2",
+    num: "Fase II",
+    tag: "Vocabulário",
+    tagClass: "tag-green",
+    title: "Ler o que sustenta o discurso",
+    subtitle: "Textos que te dão ferramentas para nomear o que você já faz. Não é teoria pela teoria — é vocabulário para articular a própria prática com densidade e precisão.",
+    sections: [
+      {
+        label: "Leituras urgentes — começar aqui",
+        items: [
+          {
+            name: "Perec — Tentativa de esgotamento de um lugar parisiense",
+            desc: "O manual do seu projeto, escrito em 1975",
+            badge: "leitura urgente", badgeClass: "tag-purple",
+            content: "Perec passa três dias numa praça de Paris descrevendo tudo que passa — o ordinário, o invisível, o que ninguém documenta. É um livro de 50 páginas. É exatamente o que você faz com os predinhos. Ler isso te dá a genealogia literária do seu projeto — e um modelo de atenção radical ao cotidiano.",
+            exercise: "Leia o livro inteiro. Depois escreva um parágrafo descrevendo um predinho como Perec descreveria — sem julgamento, sem afeto declarado, apenas o que está lá. O que aparece quando você tira a emoção?",
+            links: [
+              { label: "Perec tentativa esgotamento resenha", q: "georges perec tentativa esgotamento lugar parisiense" }
+            ]
+          },
+          {
+            name: "Barthes — A câmara clara",
+            desc: "O detalhe que fere: studium e punctum",
+            badge: "leitura urgente", badgeClass: "tag-purple",
+            content: "Barthes distingue o studium (o que a imagem comunica culturalmente, o que é legível por qualquer um) do punctum (o detalhe que te atinge pessoalmente, que não foi planejado, que te escolhe). Para você: qual é o punctum dos seus predinhos? O que você não controla e que aparece mesmo assim?",
+            exercise: "Olhe 10 obras suas e tente identificar o punctum de cada uma — o detalhe que não planejou mas que está lá e que te move. Escreva isso. Esses detalhes dizem algo sobre sua poética?",
+            links: [
+              { label: "Barthes punctum studium fotografia", q: "barthes camera lucida punctum studium" }
+            ]
+          },
+          {
+            name: "Augé — Não-lugares",
+            desc: "Você pinta o oposto do que Augé descreve",
+            badge: "leitura prioritária", badgeClass: "tag-green",
+            content: "Augé descreve os não-lugares: aeroportos, shoppings, rodovias — espaços de passagem sem história, sem identidade. Você pinta exatamente o contrário: os lugares mais carregados de memória, os que resistem à homogeneização, os que guardam histórias. Nomear esse oposto te dá uma posição crítica clara.",
+            exercise: "Escreva uma frase que posicione seu trabalho como resposta aos não-lugares de Augé. Esse pode ser o núcleo do seu texto de artista para o ISTMO.",
+            links: [
+              { label: "Marc Augé não-lugares conceito", q: "marc auge non-places concept anthropology" }
+            ]
+          },
+          {
+            name: "Benjamin — Passagens (fragmentos selecionados)",
+            desc: "A flanância, a cidade como arquivo involuntário",
+            badge: "leitura prioritária", badgeClass: "tag-green",
+            content: "Não leia o livro inteiro — é imenso. Leia o Exposé de 1935 (introdução), o fragmento sobre o flâneur e o fragmento M sobre o espelho. Benjamin vê a cidade como um arquivo involuntário da história coletiva. O flâneur é o artista que percorre a cidade como leitor, não como turista.",
+            exercise: "Após ler o flâneur de Benjamin, descreva sua prática de percorrer ruas em busca de predinhos como uma prática de leitura urbana. O que você está lendo quando caminha?",
+            links: [
+              { label: "Benjamin flâneur passagens", q: "walter benjamin flâneur passagens paris" }
+            ]
+          }
+        ]
+      },
+      {
+        label: "Leituras de segunda camada",
+        items: [
+          {
+            name: "Warburg — Atlas Mnemosyne",
+            desc: "O arquivo de imagens como obra autônoma",
+            badge: "referência de projeto", badgeClass: "tag-amber",
+            content: "Warburg organizou milhares de imagens em painéis tentando mapear como gestos e formas visuais sobrevivem através do tempo e culturas. O 365 Predinhos pode ser lido exatamente assim — um atlas afetivo e geográfico do território gaúcho. A ideia de Nachleben (sobrevivência das imagens) é poderosa para pensar sua prática.",
+            exercise: "Como você organizaria suas obras em painéis temáticos — não cronológicos? Por tipo de fachada? Por estado de abandono? Por memória associada? Esboce esse atlas.",
+            links: [
+              { label: "Warburg Atlas Mnemosyne imagem", q: "warburg atlas mnemosyne panels images" }
+            ]
+          },
+          {
+            name: "Didi-Huberman — O que vemos, o que nos olha",
+            desc: "A imagem que devolve o olhar",
+            badge: "referência conceitual", badgeClass: "tag-green",
+            content: "Didi-Huberman parte de Beckett e das caixas minimalistas de Judd para pensar como certos objetos e imagens 'nos olham de volta' — nos implicam, nos tocam, nos pedem algo. Para você: seus predinhos olham de volta? O que eles pedem de quem os vê?",
+            exercise: "Escolha uma obra sua e descreva-a como se ela estivesse te olhando, não o contrário. O que ela quer? O que ela guarda?",
+            links: [
+              { label: "Didi-Huberman imagem olhar", q: "didi-huberman o que vemos o que nos olha" }
+            ]
+          },
+          {
+            name: "Perec — A vida modo de usar",
+            desc: "O inventário exaustivo como forma literária",
+            badge: "leitura secundária", badgeClass: "tag-amber",
+            content: "Romance sobre um prédio de apartamentos em Paris, narrado cômodo a cômodo, objeto a objeto. É um inventário exaustivo do cotidiano doméstico como forma de conhecimento. Para você, o paralelo com o inventário de fachadas do RS é direto.",
+            exercise: "Escreva o inventário de um único predinho — tudo que você vê, tudo que você infere, tudo que você imagina. Sem hierarquia entre os elementos.",
+            links: [
+              { label: "Perec A vida modo de usar resenha", q: "georges perec life instructions for use analysis" }
+            ]
+          },
+          {
+            name: "Rancière — A partilha do sensível",
+            desc: "Arte como redistribuição do visível",
+            badge: "leitura secundária", badgeClass: "tag-amber",
+            content: "Rancière pensa a arte como prática que redistribui o que é visível, dizível e pensável — o que conta como arte, quem conta como sujeito, o que conta como paisagem. Seu trabalho de dar visibilidade a predinhos invisíveis tem uma dimensão política que esse vocabulário ajuda a nomear.",
+            exercise: "O que você está tornando visível que não era considerado digno de atenção artística? Quem são os sujeitos invisíveis dos seus predinhos?",
+            links: [
+              { label: "Rancière partilha do sensível arte", q: "rancière partilha do sensível arte política" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    id: "fase3",
+    num: "Fase III",
+    tag: "Produção",
+    tagClass: "tag-amber",
+    title: "Gerar o próprio discurso",
+    subtitle: "A fase onde o estudo vira escrita e a escrita vira posicionamento. O objetivo é ter textos seus que circulem junto com o trabalho — e que sejam tão rigorosos quanto as obras.",
+    sections: [
+      {
+        label: "Textos necessários — produzir agora",
+        items: [
+          {
+            name: "Texto de artista",
+            desc: "200 palavras que substituem mil explicações",
+            badge: "produção necessária", badgeClass: "tag-purple",
+            content: "O texto de artista não descreve o trabalho — ele posiciona. Deve responder: qual pergunta o trabalho está fazendo? Não o que você faz, mas por que isso importa agora, aqui, neste contexto. Use os conceitos das Fases I e II como estrutura, mas escreva com sua voz — não com o vocabulário alheio.",
+            exercise: "Escreva 3 versões de 200 palavras: uma usando o vocabulário de Augé (lugar vs. não-lugar), uma usando Benjamin (arquivo, flanância), uma usando Barthes (punctum, o detalhe). Compare. O que sobrevive nas três versões é o núcleo do seu texto.",
+            links: [
+              { label: "Como escrever texto de artista contemporâneo", q: "how to write artist statement contemporary art" }
+            ]
+          },
+          {
+            name: "Memorial do 365 Predinhos",
+            desc: "O projeto como prática duracional, não desafio",
+            badge: "produção necessária", badgeClass: "tag-purple",
+            content: "O 365 Predinhos precisa de um texto que o enquadre como prática artística contemporânea — duracional, arquivística, territorial. Não como projeto de redes sociais. Não como desafio pessoal. Como obra em processo com genealogia própria.",
+            exercise: "Descreva o projeto em 1 parágrafo sem usar: 'todo dia', 'desafio', 'um predinho por dia', '365'. Force uma linguagem diferente. Esse exercício revela o que o projeto realmente é.",
+            links: [
+              { label: "Durational practice art definition", q: "durational practice conceptual art definition examples" }
+            ]
+          },
+          {
+            name: "Curadoria conceitual do portfólio",
+            desc: "Selecionar obras por coerência, não por qualidade",
+            badge: "produção necessária", badgeClass: "tag-purple",
+            content: "Um portfólio contemporâneo não mostra o melhor tecnicamente — mostra o mais coerente com uma posição. Cada obra deve sustentar a mesma pergunta. Obras tecnicamente mais fracas mas conceitualmente mais densas podem ser mais adequadas.",
+            exercise: "Liste 30 obras recentes. Para cada uma, escreva uma frase sobre o que ela pergunta — não sobre o que ela mostra. As 15 com perguntas mais fortes formam o portfólio. Descarte as que só mostram habilidade.",
+            links: [
+              { label: "Portfolio selection contemporary art curator", q: "contemporary art portfolio selection curatorial criteria" }
+            ]
+          }
+        ]
+      },
+      {
+        label: "Hábitos contínuos — manter sempre",
+        items: [
+          {
+            name: "Leitura semanal de crítica",
+            desc: "e-flux, Frieze, Arte!Brasileiros",
+            badge: "hábito", badgeClass: "tag-green",
+            content: "Não para consumir tudo — para calibrar o vocabulário. 20 minutos por semana na e-flux (gratuita) ou na Arte!Brasileiros já te mantém dentro do que está sendo dito. Preste atenção especialmente em como artistas figuratvos ou com práticas de arquivo são descritos.",
+            exercise: "Assine a newsletter da e-flux (gratuita em e-flux.com). Toda semana, leia um texto e anote uma frase que poderia se aplicar ao seu trabalho.",
+            links: [
+              { label: "e-flux journal", q: "site:e-flux.com/journal" },
+              { label: "Arte!Brasileiros", q: "site:artebrasileirosnews.com.br" }
+            ]
+          },
+          {
+            name: "Diário crítico sobre o próprio trabalho",
+            desc: "Escrever sobre si como crítico externo",
+            badge: "hábito", badgeClass: "tag-green",
+            content: "Uma vez por semana, escreva sobre uma obra sua como se fosse um crítico escrevendo sobre outro artista. Na terceira pessoa, sem julgamento de valor sentimental, com atenção ao que a obra faz — não ao que você quis fazer. Esse exercício é o que mais acelera o deslocamento de registro.",
+            exercise: "Escreva agora sobre uma obra recente em terceira pessoa: 'A obra apresenta...', 'O artista explora...', 'A série evidencia...'. 150 palavras. Observe o que aparece quando você se afasta.",
+            links: [
+              { label: "Escrever sobre arte em terceira pessoa exemplos", q: "artist statement third person contemporary art example" }
+            ]
+          },
+          {
+            name: "Visitar exposições para ler como funcionam",
+            desc: "Textos de parede, catálogos, posicionamento",
+            badge: "hábito", badgeClass: "tag-green",
+            content: "Cada exposição que você visitar: leia o texto de parede, o folder, o release. Não para ver se concorda com a leitura — para ver como o trabalho foi posicionado. Qual o enquadramento? Que referências foram mobilizadas? Como isso muda o que você vê?",
+            exercise: "Na próxima exposição que visitar, anote 3 frases do texto de parede que poderiam ser aplicadas ao seu trabalho. Depois anote 3 que nunca poderiam. O que cada conjunto revela?",
+            links: [
+              { label: "Como ler um texto curatorial", q: "como ler texto curatorial exposição arte" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+];
+
+// --- RENDER ---
+const STORAGE_KEY = 'unspredinhos_guia_done_v1';
+const done = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'));
+
+function save() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify([...done]));
+}
+
+function totalItems() {
+  let n = 0;
+  data.forEach(p => p.sections.forEach(s => n += s.items.length));
+  return n;
+}
+
+function updateProgress() {
+  const total = totalItems();
+  const pct = total ? Math.round(done.size / total * 100) : 0;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-pct').textContent = done.size + ' / ' + total;
+}
+
+let activeDrawerId = null;
+
+function closeDrawer(id) {
+  const el = document.getElementById('drawer-' + id);
+  if (el) el.classList.remove('open');
+}
+
+function openDrawer(id) {
+  const el = document.getElementById('drawer-' + id);
+  if (el) el.classList.add('open');
+}
+
+function toggleDrawer(id) {
+  if (activeDrawerId === id) {
+    closeDrawer(id);
+    activeDrawerId = null;
+    return;
+  }
+  if (activeDrawerId) closeDrawer(activeDrawerId);
+  openDrawer(id);
+  activeDrawerId = id;
+}
+
+function toggleDone(key, e) {
+  e.stopPropagation();
+  if (done.has(key)) done.delete(key);
+  else done.add(key);
+  save();
+  const btn = document.querySelector('[data-check="' + key + '"]');
+  const item = document.querySelector('[data-item="' + key + '"]');
+  if (btn) btn.classList.toggle('checked', done.has(key));
+  if (item) item.classList.toggle('done', done.has(key));
+  updateProgress();
+}
+
+function render() {
+  const guide = document.getElementById('guide');
+  guide.innerHTML = '';
+
+  data.forEach(phase => {
+    const sec = document.createElement('section');
+    sec.className = 'phase';
+    sec.id = phase.id;
+
+    sec.innerHTML = `
+      <div class="phase-meta">
+        <span class="phase-num">${phase.num}</span>
+        <span class="phase-tag ${phase.tagClass}">${phase.tag}</span>
+      </div>
+      <h2>${phase.title}</h2>
+      <p class="phase-subtitle">${phase.subtitle}</p>
+    `;
+
+    phase.sections.forEach(section => {
+      const labelEl = document.createElement('p');
+      labelEl.className = 'section-label';
+      labelEl.textContent = section.label;
+      sec.appendChild(labelEl);
+
+      const grid = document.createElement('div');
+      grid.className = 'items-grid';
+
+      section.items.forEach((item, idx) => {
+        const key = phase.id + '_' + item.name.replace(/\s+/g, '_');
+        const isDone = done.has(key);
+
+        const drawerId = key + '_drawer';
+
+        const cell = document.createElement('div');
+        cell.className = 'item' + (isDone ? ' done' : '');
+        cell.dataset.item = key;
+        cell.setAttribute('tabindex', '0');
+        cell.setAttribute('role', 'button');
+        cell.setAttribute('aria-expanded', 'false');
+
+        cell.innerHTML = `
+          <div class="item-header">
+            <span class="item-name">${item.name}</span>
+            <button class="item-check ${isDone ? 'checked' : ''}" data-check="${key}" title="Marcar como concluído" aria-label="Marcar como concluído">✓</button>
+          </div>
+          <p class="item-desc">${item.desc}</p>
+          <span class="item-badge ${item.badgeClass}">${item.badge}</span>
+        `;
+
+        cell.addEventListener('click', () => toggleDrawer(drawerId));
+        cell.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleDrawer(drawerId); } });
+        cell.querySelector('.item-check').addEventListener('click', e => toggleDone(key, e));
+
+        grid.appendChild(cell);
+
+        const drawer = document.createElement('div');
+        drawer.className = 'drawer';
+        drawer.id = 'drawer-' + drawerId;
+
+        const linksHtml = item.links.map(l =>
+          `<a href="https://www.google.com/search?q=${encodeURIComponent(l.q)}" target="_blank" rel="noopener">${l.label} ↗</a>`
+        ).join('');
+
+        drawer.innerHTML = `
+          <h3 class="drawer-title">${item.name}</h3>
+          <p class="drawer-content">${item.content}</p>
+          <div class="exercise">
+            <p class="exercise-label">Exercício prático</p>
+            <p>${item.exercise}</p>
+          </div>
+          <div class="drawer-links">${linksHtml}</div>
+        `;
+
+        grid.appendChild(drawer);
+      });
+
+      sec.appendChild(grid);
+    });
+
+    guide.appendChild(sec);
+  });
+
+  updateProgress();
+}
+
+render();
+</script>
+</body>
+</html>
