@@ -353,7 +353,8 @@ async function loadFromGitHub() {
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const json = await res.json();
     fileSha = json.sha;
-    const decoded = JSON.parse(atob(json.content.replace(/\n/g, '')));
+    const bytes = Uint8Array.from(atob(json.content.replace(/\n/g, '')), c => c.charCodeAt(0));
+  const decoded = JSON.parse(new TextDecoder('utf-8').decode(bytes));
     state = { done: decoded.done || [], custom: decoded.custom || [] };
     saveLocalCache();
     const d = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
